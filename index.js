@@ -1,3 +1,3 @@
 'use strict';
 
-require('gulpfile');
+module.export = require('gulpfile');

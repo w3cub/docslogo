@@ -21,7 +21,7 @@ var processlog = function(msg) {
     }
 };
 
-var orginalSize = "160x160";
+var orginalSize = "72x72";
 
 function getSize(size) {
     size || (size = 72);
@@ -83,8 +83,8 @@ gulp.task('mask', function() {
 });
 
 
-gulp.task('beauty', ["mask"], function(done) {
-    var targetpath = "logo/";
+gulp.task('beauty', ["default", "mask"], function(done) {
+    var targetpath = "dist/default/72x72/";
     var size = getArgSize() || 72;
     var distpath = "./dist/beauty/" + getSize(size) + "/";
     var mask = "./dist/mask/" + orginalSize + "/mask-1.png";
