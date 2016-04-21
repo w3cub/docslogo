@@ -23,6 +23,8 @@ var processlog = function(msg) {
 
 var orginalSize = "72x72";
 
+var fullBackground = ["react", "react_native", "typescript", "javascript","gcc", "dojo","rethinkdb","gnu_fortran"];
+
 function getSize(size) {
     size || (size = 72);
     return size + "x" + size;
@@ -41,7 +43,7 @@ function handleImage(item, targetpath, distpath, size, mask, callback) {
     var ps = spawn("convert", [
         "-alpha", "set",
         targetpath + item,
-        "-resize", "80%",
+        "-resize", (!~fullBackground.indexOf(item.replace(".png","")) ? "80%" : "100%"),
         "-gravity", "center",
         "-extent", orginalSize,
         "background/1.png", "-compose", "DstOver", "-composite",
