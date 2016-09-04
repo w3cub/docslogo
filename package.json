@@ -20,9 +20,10 @@
     "url": "https://github.com/icai/tech-logo/issues"
   },
   "devDependencies": {
+    "async": "^2.0.1",
+    "gulp": "~3.9.1",
     "gulp-gm": "0.0.8",
     "gulp-util": "~3.0.6",
-    "mkdirp": "~0.5.1",
-    "gulp": "~3.9.1"
+    "mkdirp": "~0.5.1"
   }
 }

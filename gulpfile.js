@@ -52,8 +52,8 @@ function handleImage(item, targetpath, distpath, size, mask, callback) {
         distpath + path.basename(item)
     ]);
     // ps.stdin.end();
-    ps.on('error', function() {
-        console.info('error');
+    ps.on('error', function(e) {
+        console.info("please install imageMagick");
     })
     ps.on('exit', function() {
         callback();
