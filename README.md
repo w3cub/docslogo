@@ -1,7 +1,7 @@
 # tech-logo
 some framework and development language logos
 
-##Install
+##Installion
 
 Ubuntu:
 
@@ -32,3 +32,14 @@ gulp --tasks
 ```
 
 Task detail see the `gulpfile.js` file.
+
+
+##Result
+
+![Result](result.png "Result")
+
+
+
+##License
+
+Licensed under the MIT license.
