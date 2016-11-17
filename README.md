@@ -1,7 +1,7 @@
 # tech-logo
 some framework and development language logos
 
-##Installion
+##Install
 
 Ubuntu:
 
