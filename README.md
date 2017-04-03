@@ -1,7 +1,7 @@
 # tech-logo
 some framework and development language logos
 
-##Install
+## Install
 
 Ubuntu:
 
@@ -23,7 +23,7 @@ Windows & others:
 
 Confirm that GraphicsMagick or ImageMagick is properly set up by executing `gm -version` or `convert -version` in a terminal.
 
-##Task
+## Task
 
 ```shell
 npm install
@@ -34,12 +34,12 @@ gulp --tasks
 Task detail see the `gulpfile.js` file.
 
 
-##Result
+## Result
 
 ![Result](result.png "Result")
 
 
 
-##License
+## License
 
 Licensed under the MIT license.
