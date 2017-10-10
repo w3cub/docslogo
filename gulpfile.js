@@ -23,7 +23,7 @@ var processlog = function(msg) {
 
 var orginalSize = "72x72";
 
-var fullBackground = ["tcl_tk", "react", "react_native", 
+var fullBackground = ["tcl_tk", "react", "react_native", 'd',
     "typescript", "javascript","gcc", "dojo","rethinkdb","gnu_fortran", "fish", "statsmodels"
 ];
 
