@@ -1,4 +1,4 @@
-# tech-logo
+# docslogo
 some framework and development language logos
 
 ## Install
@@ -36,7 +36,7 @@ Task detail see the `gulpfile.js` file.
 
 ## Result
 
-![Result](result.png "Result")
+![Result](https://raw.githubusercontent.com/icai/docslogo/master/result.png "Result")
 
 
 
