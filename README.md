@@ -26,6 +26,7 @@ Confirm that GraphicsMagick or ImageMagick is properly set up by executing `gm -
 ## Task
 
 ```shell
+npm -g install gulp-cli
 npm install
 gulp --tasks
 
