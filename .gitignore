@@ -29,3 +29,4 @@ node_modules
 logo_bak
 lb
 package-lock.json
+dist
