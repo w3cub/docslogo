@@ -8,6 +8,7 @@ const mkdirp = require('mkdirp');
 const async = require('async');
 const { inspect } = require('util');
 const inspectStyle = Symbol.for('nodejs.util.inspect.custom');
+const { orginalSize,  fullBackground } = require('./config');
 
 const processlog = function (msg) {
   const obj = {
@@ -22,12 +23,6 @@ const processlog = function (msg) {
 
   }
 };
-
-const orginalSize = "72x72";
-
-const fullBackground = ["tcl_tk", "react", "react_native", 'd',
-  "typescript", "javascript", "gcc", "dojo", "rethinkdb", "gnu_fortran", "fish", "statsmodels"
-];
 
 function getSize(size) {
   size || (size = 72);
