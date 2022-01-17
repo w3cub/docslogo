@@ -6,9 +6,13 @@ const fs = require('fs');
 const path = require("path");
 const mkdirp = require('mkdirp');
 const async = require('async');
+const spritesmith = require('gulp.spritesmith');
 const { inspect } = require('util');
 const inspectStyle = Symbol.for('nodejs.util.inspect.custom');
-const { orginalSize,  fullBackground } = require('./config');
+const { 
+  orginalSize, fullBackground, maskDist,
+  maskOut, beautyTarget, beautyDist, spriteDist 
+} = require('./config');
 
 const processlog = function (msg) {
   const obj = {
@@ -33,6 +37,8 @@ function getArgSize() {
   var argv = process.argv.slice(3);
   if (argv[0] == "-s" && argv[1]) {
     return argv[1];
+  } else {
+    return 72
   }
 }
 
@@ -60,7 +66,7 @@ function handleImage(item, targetpath, distpath, size, mask, callback) {
 }
 
 
-function defaultTask() {
+function normalSize() {
   return gulp.src('logo/*.png')
     .pipe(gm(function (gmfile) {
       return gmfile
@@ -69,11 +75,10 @@ function defaultTask() {
     }, {
       imageMagick: true
     }))
-    .pipe(gulp.dest('./dist/default/' + getSize()));
+    .pipe(gulp.dest(normalDist + getSize()));
 }
 
-
-function maskTask() {
+function makeMask() {
   return gulp.src('mask/*.png')
     .pipe(gm(function (gmfile) {
       return gmfile
@@ -81,19 +86,14 @@ function maskTask() {
     }, {
       imageMagick: true
     }))
-    .pipe(gulp.dest('./dist/mask/' + orginalSize));
+    .pipe(gulp.dest(maskDist));
 }
 
-exports.default = defaultTask
-
-exports.mask = maskTask
-
-
-exports.beauty = gulp.series(defaultTask, maskTask, function (done) {
-  const targetpath = "dist/default/72x72/";
-  const size = getArgSize() || 72;
-  const distpath = "./dist/beauty/" + getSize(size) + "/";
-  const mask = "./dist/mask/" + orginalSize + "/mask-1.png";
+function makeBeauty(done) {
+  const targetpath = beautyTarget;
+  const size = getArgSize();
+  const distpath = beautyDist;
+  const mask = maskOut.prettier;
   mkdirp.sync(distpath);
   fs.readdir(targetpath, function (err, items) {
     async.eachSeries(items, function iterator(item, callback) {
@@ -104,5 +104,38 @@ exports.beauty = gulp.series(defaultTask, maskTask, function (done) {
       done();
     });
   });
-})
+}
 
+function makeSprite() {
+  var spriteData = gulp.src(beautyDist +'*.png').pipe(spritesmith({
+    imgName: 'sprite.png',
+    cssName: 'sprite.json'
+  }));
+  return spriteData.pipe(gulp.dest(spriteDist));
+}
+
+
+function cssSprite(done) {
+  var spriteData = fs.readFileSync(spriteDist + 'sprite.json')
+  var manifest = JSON.parse(spriteData);
+  var css = '';
+  for (const key in manifest) {
+    if (Object.hasOwnProperty.call(manifest, key)) {
+      const element = manifest[key];
+      css += `._icon-${key}.loaded{background-position:${element.px.offset_x} ${element.px.offset_y};}`;
+    }
+  }
+  fs.writeFileSync(spriteDist + 'sprite.css', css);
+  fs.unlinkSync(spriteDist + 'sprite.json');
+  done()
+}
+
+exports.default = normalSize
+
+exports.mask = makeMask
+
+exports.cssSprite = cssSprite;
+
+exports.beauty = gulp.series(normalSize, makeMask, makeBeauty)
+
+exports.sprite = gulp.series(normalSize, makeMask, makeBeauty, makeSprite, cssSprite)

@@ -1,14 +1,14 @@
 {
-  "name": "tech-logo",
+  "name": "docslogo",
   "version": "0.9.12",
-  "description": "framework and popular language logos",
+  "description": "framework, technical or popular language logos",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/icai/tech-logo.git"
+    "url": "https://github.com/w3cub/docslogo.git"
   },
   "keywords": [
     "logo",
@@ -17,13 +17,13 @@
   "author": "Terry Cai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/icai/tech-logo/issues"
+    "url": "https://github.com/w3cub/docslogo/issues"
   },
-  "devDependencies": {
-    "async": "^3.2.0",
+  "dependencies": {
+    "async": "^3.2.3",
     "gulp": "~4.0.2",
     "gulp-gm": "0.0.9",
-    "gulp-util": "~3.0.8",
-    "mkdirp": "~1.0.4"
+    "mkdirp": "~1.0.4",
+    "gulp.spritesmith": "^6.12.1"
   }
 }
