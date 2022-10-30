@@ -10,7 +10,7 @@ const spritesmith = require('gulp.spritesmith');
 const { inspect } = require('util');
 const inspectStyle = Symbol.for('nodejs.util.inspect.custom');
 const { 
-  orginalSize, fullBackground, maskDist,
+  orginalSize, fullBackground, maskDist, normalDist,
   maskOut, beautyTarget, beautyDist, spriteDist 
 } = require('./config');
 
