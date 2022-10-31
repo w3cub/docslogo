@@ -4,6 +4,7 @@
   "description": "framework, technology and popular programming language logos",
   "main": "index.js",
   "scripts": {
+    "sprite": "gulp sprite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
