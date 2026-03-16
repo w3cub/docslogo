@@ -52,7 +52,7 @@ function handleImage(item, targetpath, distpath, size, mask, callback) {
     "-gravity", "center",
     "-extent", orginalSize,
     "background/1.png", "-compose", "DstOver", "-composite",
-    mask, "-compose", "DstIn", "-composite",
+    // mask, "-compose", "DstIn", "-composite",
     "-resize", getSize(size),
     distpath + path.basename(item)
   ]);
